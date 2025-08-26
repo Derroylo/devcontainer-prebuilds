@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - "main"
+
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -25,6 +29,6 @@ jobs:
         uses: devcontainers/ci@v0.2
         with:
           subFolder: php
-          imageName: ghcr.io/derroylo/devcontainer-prebuilds/php
-          cacheFrom: ghcr.io/derroylo/devcontainer-prebuilds/php
+          imageName: ${{ env.REGISTRY }}/${{ github.repository }}/php
+          cacheFrom: ${{ env.REGISTRY }}/${{ github.repository }}/php
           push: always
