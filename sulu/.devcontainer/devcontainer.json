@@ -1,0 +1,26 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/php
+{
+	"name": "DevContainer for PHP Development",
+	"image": "ghcr.io/derroylo/docker-images/devcontainer/php:latest",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		// Install git: https://github.com/devcontainers/features/tree/main/src/git
+		"ghcr.io/devcontainers/features/git:1": {},
+		// Install nodejs, yarn and pnpm: https://github.com/devcontainers/features/tree/main/src/node
+		"ghcr.io/devcontainers/features/node:1": {},
+		// Install composer: https://github.com/devcontainers-contrib/features/tree/main/src/composer
+		"ghcr.io/devcontainers-extra/features/composer:1": {},
+		// Install dotnet: https://github.com/devcontainers/features/tree/main/src/dotnet
+		"ghcr.io/devcontainers/features/dotnet:2": {
+            "version": "9.0"
+        },
+		// Install symfony cli: https://github.com/shyim/devcontainers-features/tree/main/src/symfony-cli
+		"ghcr.io/shyim/devcontainers-features/symfony-cli:0": {}
+	},
+	// Override the default install order for features.
+	"overrideFeatureInstallOrder": [
+	    "ghcr.io/devcontainers/features/git", // Must be installed first as other tools require this
+		"ghcr.io/devcontainers-extra/features/composer"
+	]
+}
