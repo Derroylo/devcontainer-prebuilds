@@ -29,6 +29,6 @@ jobs:
         uses: devcontainers/ci@v0.2
         with:
           subFolder: php
-          imageName: ${{ env.REGISTRY }}/${{ github.repository }}/php
-          cacheFrom: ${{ env.REGISTRY }}/${{ github.repository }}/php
+          imageName: ${{ env.REGISTRY }}/derroylo/devcontainer-prebuilds/php
+          cacheFrom: ${{ env.REGISTRY }}/derroylo/devcontainer-prebuilds/php
           push: always
