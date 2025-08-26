@@ -1,0 +1,30 @@
+name: Dev Container Build and Push Image
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "main"
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+    - 
+      name: Checkout
+      id: checkout
+      uses: actions/checkout@v1
+    -
+        name: Login to GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.REGISTRY_TOKEN }}
+    - 
+        name: Pre-build PHP dev container image
+        uses: devcontainers/ci@v0.2
+        with:
+          subFolder: php
+          imageName: ghcr.io/derroylo/devcontainer-prebuilds/php
+          cacheFrom: ghcr.io/derroylo/devcontainer-prebuilds/php
+          push: always
